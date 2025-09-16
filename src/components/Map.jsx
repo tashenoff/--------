@@ -3,16 +3,16 @@ import data from '../data/products.json'
 
 const Map = () => {
   return (
-    <section id="map" className="section-padding bg-dark-800">
+    <section id="map" className="section-padding bg-gray-200">
       <div className="container-custom">
         {/* Section Header */}
         <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-heading font-bold mb-6">
             <span className="text-gradient">Наш склад</span>
             <br />
-            <span className="text-white">в Алматы</span>
+            <span className="text-gray-900">в Алматы</span>
           </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-700 max-w-3xl mx-auto">
             Собственный склад с постоянным наличием товара. 
             Приезжайте к нам за качественными задвижками.
           </p>
@@ -21,7 +21,7 @@ const Map = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Map Container */}
           <div className="order-2 lg:order-1">
-            <div className="bg-dark-700 rounded-2xl p-6 border border-dark-600">
+            <div className="bg-white rounded-2xl p-6 border border-gray-300 shadow-lg">
               <div className="aspect-video rounded-lg overflow-hidden relative">
                 {/* Embedded Google Maps */}
                 <iframe
@@ -37,16 +37,16 @@ const Map = () => {
                 ></iframe>
                 
                 {/* Overlay with company info */}
-                <div className="absolute bottom-4 left-4 bg-dark-900/90 backdrop-blur-sm rounded-lg p-3 max-w-xs">
+                <div className="absolute bottom-4 left-4 bg-white/90 backdrop-blur-sm rounded-lg p-3 max-w-xs border border-gray-200">
                   <div className="flex items-center space-x-2 mb-1">
                     <div className="w-6 h-6 bg-primary-500 rounded-full flex items-center justify-center flex-shrink-0">
                       <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
                       </svg>
                     </div>
-                    <h3 className="text-sm font-semibold text-white">Склад {data.company.name}</h3>
+                    <h3 className="text-sm font-semibold text-gray-900">Склад {data.company.name}</h3>
                   </div>
-                  <p className="text-xs text-gray-300">{data.contact.address}</p>
+                  <p className="text-xs text-gray-700">{data.contact.address}</p>
                 </div>
               </div>
               
@@ -77,8 +77,8 @@ const Map = () => {
                 </svg>
               </div>
               <div>
-                <h3 className="text-xl font-semibold text-white mb-2">Адрес склада</h3>
-                <p className="text-gray-300 leading-relaxed">{data.contact.address}</p>
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">Адрес склада</h3>
+                <p className="text-gray-700 leading-relaxed">{data.contact.address}</p>
               </div>
             </div>
 
@@ -90,13 +90,21 @@ const Map = () => {
                 </svg>
               </div>
               <div>
-                <h3 className="text-xl font-semibold text-white mb-2">Телефон</h3>
-                <a 
-                  href={`tel:${data.contact.phone}`}
-                  className="text-primary-400 hover:text-primary-300 transition-colors text-lg"
-                >
-                  {data.contact.phone}
-                </a>
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">Телефоны</h3>
+                <div className="space-y-1">
+                  <a 
+                    href={`tel:${data.contact.phone}`}
+                    className="block text-primary-700 hover:text-primary-800 transition-colors text-lg"
+                  >
+                    {data.contact.phone}
+                  </a>
+                  <a 
+                    href={`tel:${data.contact.phone2}`}
+                    className="block text-primary-700 hover:text-primary-800 transition-colors text-lg"
+                  >
+                    {data.contact.phone2}
+                  </a>
+                </div>
               </div>
             </div>
 
@@ -108,8 +116,8 @@ const Map = () => {
                 </svg>
               </div>
               <div>
-                <h3 className="text-xl font-semibold text-white mb-2">Время работы</h3>
-                <p className="text-gray-300">{data.contact.workingHours}</p>
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">Время работы</h3>
+                <p className="text-gray-700">{data.contact.workingHours}</p>
               </div>
             </div>
 
@@ -121,10 +129,10 @@ const Map = () => {
                 </svg>
               </div>
               <div>
-                <h3 className="text-xl font-semibold text-white mb-2">Email</h3>
-                <a 
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">Email</h3>
+                  <a 
                   href={`mailto:${data.contact.email}`}
-                  className="text-primary-400 hover:text-primary-300 transition-colors"
+                  className="text-primary-700 hover:text-primary-800 transition-colors"
                 >
                   {data.contact.email}
                 </a>
@@ -132,9 +140,9 @@ const Map = () => {
             </div>
 
             {/* CTA */}
-            <div className="bg-gradient-to-r from-primary-900/30 to-accent-900/30 rounded-xl p-6 border border-primary-800/30">
-              <h4 className="text-lg font-semibold text-white mb-3">Готовы сделать заказ?</h4>
-              <p className="text-gray-300 mb-4">
+            <div className="bg-gradient-to-r from-primary-100 to-accent-100 rounded-xl p-6 border border-primary-200">
+              <h4 className="text-lg font-semibold text-gray-900 mb-3">Готовы сделать заказ?</h4>
+              <p className="text-gray-700 mb-4">
                 Свяжитесь с нами удобным способом для получения консультации и оформления заказа.
               </p>
               <div className="flex flex-col sm:flex-row gap-3">

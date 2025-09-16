@@ -1,23 +1,32 @@
-import React from 'react'
+import React, { useState } from 'react'
 import data from '../data/products.json'
 
 const Products = () => {
+  const [expandedProducts, setExpandedProducts] = useState({})
+
   const handleWhatsAppClick = (productName) => {
     const message = `Здравствуйте! Интересует информация о "${productName}".`
     window.open(`https://wa.me/${data.company.whatsapp}?text=${encodeURIComponent(message)}`, '_blank')
   }
 
+  const toggleExpanded = (productId) => {
+    setExpandedProducts(prev => ({
+      ...prev,
+      [productId]: !prev[productId]
+    }))
+  }
+
   return (
-    <section id="products" className="section-padding bg-dark-800">
+    <section id="products" className="section-padding bg-gray-100">
       <div className="container-custom">
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-heading font-bold mb-6">
             <span className="text-gradient">Широкий ассортимент</span>
             <br />
-            <span className="text-white">задвижек</span>
+            <span className="text-gray-900">задвижек</span>
           </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-700 max-w-3xl mx-auto">
             Товар всегда в наличии на складе в городе Алматы. На нашем сайте вы можете заказать 
             задвижки стальные, чугунные и нержавеющие.
           </p>
@@ -28,7 +37,7 @@ const Products = () => {
           {data.products.map((product, index) => (
             <div 
               key={product.id}
-              className="card-dark overflow-hidden group animate-fade-in"
+              className="card-light overflow-hidden group animate-fade-in"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               {/* Product Image */}
@@ -39,7 +48,7 @@ const Products = () => {
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   loading="lazy"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-dark-900/60 to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-gray-900/60 to-transparent"></div>
                 <div className="absolute bottom-4 left-4 right-4">
                   <h3 className="text-xl md:text-2xl font-heading font-bold text-white mb-2 group-hover:text-primary-400 transition-colors">
                     {product.name}
@@ -51,37 +60,63 @@ const Products = () => {
               <div className="p-6 md:p-8">
                 {/* Product Description */}
                 <div className="mb-6">
-                  <p className="text-gray-300 leading-relaxed">
+                  <p className="text-gray-700 leading-relaxed">
                     {product.description}
                   </p>
                 </div>
 
-                {/* Features */}
-                <div className="mb-6">
-                  <h4 className="text-lg font-semibold text-primary-400 mb-3">Особенности:</h4>
-                  <ul className="space-y-2">
-                    {product.features.map((feature, idx) => (
-                      <li key={idx} className="flex items-center space-x-3 text-gray-300">
-                        <div className="w-2 h-2 bg-primary-400 rounded-full flex-shrink-0"></div>
-                        <span>{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                {/* Applications */}
+                {/* Expandable Details */}
                 <div className="mb-8">
-                  <h4 className="text-lg font-semibold text-accent-400 mb-3">Применение:</h4>
-                  <div className="flex flex-wrap gap-2">
-                    {product.applications.map((app, idx) => (
-                      <span 
-                        key={idx}
-                        className="px-3 py-1 bg-dark-700 text-gray-300 rounded-full text-sm border border-dark-600"
-                      >
-                        {app}
-                      </span>
-                    ))}
-                  </div>
+                  <button
+                    onClick={() => toggleExpanded(product.id)}
+                    className="w-full flex items-center justify-between p-4 bg-gray-50 hover:bg-gray-100 rounded-lg transition-colors border border-gray-200"
+                  >
+                    <span className="text-lg font-semibold text-gray-900">
+                      {expandedProducts[product.id] ? 'Скрыть детали' : 'Подробнее'}
+                    </span>
+                    <svg 
+                      className={`w-5 h-5 text-gray-600 transition-transform ${
+                        expandedProducts[product.id] ? 'rotate-180' : ''
+                      }`} 
+                      fill="none" 
+                      stroke="currentColor" 
+                      viewBox="0 0 24 24"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </button>
+                  
+                  {expandedProducts[product.id] && (
+                    <div className="mt-4 space-y-6 animate-fade-in">
+                      {/* Features */}
+                      <div>
+                        <h4 className="text-lg font-semibold text-primary-700 mb-3">Особенности:</h4>
+                        <ul className="space-y-2">
+                          {product.features.map((feature, idx) => (
+                            <li key={idx} className="flex items-center space-x-3 text-gray-700">
+                              <div className="w-2 h-2 bg-primary-600 rounded-full flex-shrink-0"></div>
+                              <span>{feature}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+
+                      {/* Applications */}
+                      <div>
+                        <h4 className="text-lg font-semibold text-accent-700 mb-3">Применение:</h4>
+                        <div className="flex flex-wrap gap-2">
+                          {product.applications.map((app, idx) => (
+                            <span 
+                              key={idx}
+                              className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm border border-gray-300"
+                            >
+                              {app}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  )}
                 </div>
 
                 {/* CTA Button */}
@@ -100,11 +135,11 @@ const Products = () => {
         </div>
 
         {/* Call to Action */}
-        <div className="text-center bg-gradient-to-r from-primary-900/30 to-accent-900/30 rounded-2xl p-8 border border-primary-800/30">
-          <h3 className="text-2xl md:text-3xl font-heading font-bold text-white mb-4">
+        <div className="text-center bg-gradient-to-r from-primary-100 to-accent-100 rounded-2xl p-8 border border-primary-200">
+          <h3 className="text-2xl md:text-3xl font-heading font-bold text-gray-900 mb-4">
             Нужна консультация специалиста?
           </h3>
-          <p className="text-gray-300 mb-6 max-w-2xl mx-auto">
+          <p className="text-gray-700 mb-6 max-w-2xl mx-auto">
             Мы поможем подобрать оптимальное решение для вашего проекта. 
             Звоните или пишите в WhatsApp для получения подробной консультации.
           </p>

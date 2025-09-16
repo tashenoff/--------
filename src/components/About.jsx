@@ -29,17 +29,17 @@ const About = () => {
   }
 
   return (
-    <section id="about" className="section-padding bg-dark-900">
+    <section id="about" className="section-padding bg-gray-100">
       <div className="container-custom">
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-heading font-bold mb-6">
-            <span className="text-white">О компании</span>
+            <span className="text-gray-900">О компании</span>
             <br />
             <span className="text-gradient">{data.company.name}</span>
           </h2>
-          <p className="text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
-            {data.company.description}. Мы являемся официальным дилером заводов РФ. 
+          <p className="text-xl text-gray-700 max-w-4xl mx-auto leading-relaxed">
+            {data.company.description}. Мы являемся официальным дилером заводов Казахстана. 
             Также ассортимент дополнен товарами заводов ряда других стран Турции, Дании, 
             Германии и КНР. Большой ассортимент задвижек, гарантии и высокое качество, 
             ответственность и оперативность работы персонала, деловой и индивидуальный 
@@ -48,22 +48,18 @@ const About = () => {
         </div>
 
         {/* Company Stats */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 mb-16">
           <div className="text-center">
-            <div className="text-4xl md:text-5xl font-bold text-primary-400 mb-2">10+</div>
-            <div className="text-gray-300">лет опыта</div>
+            <div className="text-4xl md:text-5xl font-bold text-primary-700 mb-2">10+</div>
+            <div className="text-gray-700">лет опыта</div>
           </div>
           <div className="text-center">
-            <div className="text-4xl md:text-5xl font-bold text-primary-400 mb-2">1000+</div>
-            <div className="text-gray-300">довольных клиентов</div>
+            <div className="text-4xl md:text-5xl font-bold text-primary-700 mb-2">1000+</div>
+            <div className="text-gray-700">довольных клиентов</div>
           </div>
           <div className="text-center">
-            <div className="text-4xl md:text-5xl font-bold text-primary-400 mb-2">24/7</div>
-            <div className="text-gray-300">поддержка</div>
-          </div>
-          <div className="text-center">
-            <div className="text-4xl md:text-5xl font-bold text-primary-400 mb-2">100%</div>
-            <div className="text-gray-300">гарантия качества</div>
+            <div className="text-4xl md:text-5xl font-bold text-primary-700 mb-2">100%</div>
+            <div className="text-gray-700">гарантия качества</div>
           </div>
         </div>
 
@@ -72,7 +68,7 @@ const About = () => {
           {data.advantages.map((advantage, index) => (
             <div 
               key={index}
-              className="card-dark p-6 text-center group animate-fade-in"
+              className="card-light p-6 text-center group animate-fade-in"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               <div className="w-16 h-16 bg-gradient-to-br from-primary-500 to-accent-500 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
@@ -80,10 +76,10 @@ const About = () => {
                   {getIcon(advantage.icon)}
                 </div>
               </div>
-              <h3 className="text-xl font-heading font-semibold text-white mb-3 group-hover:text-primary-400 transition-colors">
+              <h3 className="text-xl font-heading font-semibold text-gray-900 mb-3 group-hover:text-primary-700 transition-colors">
                 {advantage.title}
               </h3>
-              <p className="text-gray-300 leading-relaxed">
+              <p className="text-gray-700 leading-relaxed">
                 {advantage.description}
               </p>
             </div>
@@ -91,12 +87,12 @@ const About = () => {
         </div>
 
         {/* Company Description */}
-        <div className="bg-gradient-to-r from-primary-900/20 to-accent-900/20 rounded-2xl p-8 md:p-12 border border-primary-800/30">
+        <div className="bg-gradient-to-r from-primary-100 to-accent-100 rounded-2xl p-8 md:p-12 border border-primary-200">
           <div className="max-w-4xl mx-auto text-center">
-            <h3 className="text-3xl md:text-4xl font-heading font-bold text-white mb-6">
+            <h3 className="text-3xl md:text-4xl font-heading font-bold text-gray-900 mb-6">
               Купить задвижки можно прямо на сайте
             </h3>
-            <div className="text-gray-300 space-y-4 text-lg leading-relaxed">
+            <div className="text-gray-700 space-y-4 text-lg leading-relaxed">
               <p>
                 Ценовая политика компании "{data.company.name}" нацелена в пользу покупателя. 
                 Лояльная и гибкая система скидок. Приход задвижек осуществляется на прямую 
@@ -118,3 +114,4 @@ const About = () => {
 }
 
 export default About
+

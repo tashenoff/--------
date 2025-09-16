@@ -13,7 +13,7 @@ const Footer = () => {
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer id="contact" className="bg-dark-900 border-t border-dark-700">
+    <footer id="contact" className="bg-white border-t border-gray-300">
       {/* Main Footer */}
       <div className="section-padding">
         <div className="container-custom">
@@ -25,13 +25,13 @@ const Footer = () => {
                   <span className="text-white font-bold text-xl">A</span>
                 </div>
                 <div>
-                  <h3 className="text-2xl font-heading font-bold text-white">
+                  <h3 className="text-2xl font-heading font-bold text-gray-900">
                     {data.company.name}
                   </h3>
-                  <p className="text-gray-400">{data.company.location}</p>
+                  <p className="text-gray-600">{data.company.location}</p>
                 </div>
               </div>
-              <p className="text-gray-300 mb-6 leading-relaxed max-w-md">
+              <p className="text-gray-700 mb-6 leading-relaxed max-w-md">
                 {data.company.description}. Мы гарантируем высокое качество продукции, 
                 оперативность работы и индивидуальный подход к каждому клиенту.
               </p>
@@ -61,13 +61,13 @@ const Footer = () => {
 
             {/* Products */}
             <div>
-              <h4 className="text-lg font-semibold text-white mb-4">Продукция</h4>
+              <h4 className="text-lg font-semibold text-gray-900 mb-4">Продукция</h4>
               <ul className="space-y-3">
                 {data.products.map((product) => (
                   <li key={product.id}>
                     <button
                       onClick={() => window.open(`https://wa.me/${data.company.whatsapp}?text=Интересует ${product.name}`, '_blank')}
-                      className="text-gray-300 hover:text-primary-400 transition-colors text-left"
+                      className="text-gray-700 hover:text-primary-700 transition-colors text-left"
                     >
                       {product.name}
                     </button>
@@ -78,20 +78,20 @@ const Footer = () => {
 
             {/* Contact Info */}
             <div>
-              <h4 className="text-lg font-semibold text-white mb-4">Контакты</h4>
+              <h4 className="text-lg font-semibold text-gray-900 mb-4">Контакты</h4>
               <div className="space-y-3">
                 <div className="flex items-start space-x-3">
                   <svg className="w-5 h-5 text-primary-400 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
                   </svg>
-                  <span className="text-gray-300 text-sm">{data.contact.address}</span>
+                  <span className="text-gray-700 text-sm">{data.contact.address}</span>
                 </div>
                 
                 <div className="flex items-center space-x-3">
                   <svg className="w-5 h-5 text-primary-400 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
                   </svg>
-                  <a href={`tel:${data.contact.phone}`} className="text-gray-300 hover:text-primary-400 transition-colors text-sm">
+                  <a href={`tel:${data.contact.phone}`} className="text-gray-700 hover:text-primary-700 transition-colors text-sm">
                     {data.contact.phone}
                   </a>
                 </div>
@@ -100,7 +100,7 @@ const Footer = () => {
                   <svg className="w-5 h-5 text-primary-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                   </svg>
-                  <a href={`mailto:${data.contact.email}`} className="text-gray-300 hover:text-primary-400 transition-colors text-sm">
+                  <a href={`mailto:${data.contact.email}`} className="text-gray-700 hover:text-primary-700 transition-colors text-sm">
                     {data.contact.email}
                   </a>
                 </div>
@@ -109,7 +109,7 @@ const Footer = () => {
                   <svg className="w-5 h-5 text-primary-400 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
-                  <span className="text-gray-300 text-sm">{data.contact.workingHours}</span>
+                  <span className="text-gray-700 text-sm">{data.contact.workingHours}</span>
                 </div>
               </div>
             </div>
@@ -119,7 +119,7 @@ const Footer = () => {
           <div className="text-center mb-8">
             <button
               onClick={scrollToTop}
-              className="inline-flex items-center space-x-2 text-gray-400 hover:text-primary-400 transition-colors group"
+              className="inline-flex items-center space-x-2 text-gray-600 hover:text-primary-700 transition-colors group"
             >
               <svg className="w-5 h-5 group-hover:-translate-y-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
@@ -131,14 +131,14 @@ const Footer = () => {
       </div>
 
       {/* Bottom Bar */}
-      <div className="border-t border-dark-700 py-6">
+      <div className="border-t border-gray-300 py-6">
         <div className="container-custom">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <div className="text-gray-400 text-sm">
+            <div className="text-gray-600 text-sm">
               © {currentYear} {data.company.name}. Все права защищены.
             </div>
-            <div className="flex items-center space-x-6 text-sm text-gray-400">
-              <span>Официальные дилеры заводов РФ</span>
+            <div className="flex items-center space-x-6 text-sm text-gray-600">
+              <span>Официальные дилеры заводов Казахстана</span>
               <span>•</span>
               <span>Гарантия качества</span>
             </div>
@@ -150,3 +150,4 @@ const Footer = () => {
 }
 
 export default Footer
+

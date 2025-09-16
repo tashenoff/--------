@@ -24,9 +24,7 @@ const Header = () => {
   }
 
   return (
-    <header className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-      isScrolled ? 'bg-dark-900/95 backdrop-blur-sm shadow-lg' : 'bg-transparent'
-    }`}>
+    <header className="fixed top-0 w-full z-50 bg-white/95 backdrop-blur-sm shadow-lg transition-all duration-300">
       <div className="container-custom px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
           {/* Logo */}
@@ -35,10 +33,10 @@ const Header = () => {
               <span className="text-white font-bold text-sm sm:text-lg">A</span>
             </div>
             <div className="min-w-0">
-              <h1 className="text-lg sm:text-xl font-heading font-bold text-white truncate">
+              <h1 className="text-lg sm:text-xl font-heading font-bold text-gray-900 truncate">
                 {data.company.name}
               </h1>
-              <p className="text-xs sm:text-sm text-gray-400 hidden sm:block">{data.company.location}</p>
+              <p className="text-xs sm:text-sm text-gray-600 hidden sm:block">{data.company.location}</p>
             </div>
           </div>
 
@@ -46,37 +44,45 @@ const Header = () => {
           <nav className="hidden md:flex items-center space-x-6 lg:space-x-8">
             <button 
               onClick={() => scrollToSection('hero')}
-              className="text-gray-300 hover:text-primary-400 transition-colors duration-300"
+              className="text-gray-700 hover:text-primary-700 transition-colors duration-300"
             >
               Главная
             </button>
             <button 
               onClick={() => scrollToSection('products')}
-              className="text-gray-300 hover:text-primary-400 transition-colors duration-300"
+              className="text-gray-700 hover:text-primary-700 transition-colors duration-300"
             >
               Продукция
             </button>
             <button 
               onClick={() => scrollToSection('about')}
-              className="text-gray-300 hover:text-primary-400 transition-colors duration-300"
+              className="text-gray-700 hover:text-primary-700 transition-colors duration-300"
             >
               О компании
             </button>
             <button 
               onClick={() => scrollToSection('contact')}
-              className="text-gray-300 hover:text-primary-400 transition-colors duration-300"
+              className="text-gray-700 hover:text-primary-700 transition-colors duration-300"
             >
               Контакты
             </button>
-            <a
-              href={`tel:${data.company.phone}`}
-              className="flex items-center space-x-2 text-gray-300 hover:text-primary-400 transition-colors duration-300 border-l border-dark-600 pl-6 lg:pl-8"
-            >
-              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
-              </svg>
-              <span className="text-sm lg:text-base">{data.company.phone}</span>
-            </a>
+                  <div className="flex items-center space-x-4 text-gray-700 border-l border-gray-300 pl-6 lg:pl-8">
+                    <a
+                      href={`tel:${data.company.phone}`}
+                      className="flex items-center space-x-2 hover:text-primary-700 transition-colors duration-300"
+                    >
+                      <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+                      </svg>
+                      <span className="text-sm lg:text-base">{data.company.phone}</span>
+                    </a>
+                    <a
+                      href={`tel:${data.company.phone2}`}
+                      className="text-sm lg:text-base hover:text-primary-700 transition-colors duration-300"
+                    >
+                      {data.company.phone2}
+                    </a>
+                  </div>
           </nav>
 
           {/* CTA Button & Mobile Menu */}
@@ -93,7 +99,7 @@ const Header = () => {
 
             {/* Mobile menu button */}
             <button
-              className="md:hidden text-white p-2 flex-shrink-0"
+              className="md:hidden text-gray-900 p-2 flex-shrink-0"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
               <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -109,43 +115,49 @@ const Header = () => {
 
         {/* Mobile Navigation */}
         {isMobileMenuOpen && (
-          <div className="md:hidden bg-dark-800 rounded-lg mt-2 p-4 animate-fade-in">
+          <div className="md:hidden bg-white rounded-lg mt-2 p-4 animate-fade-in shadow-lg border border-gray-200">
             <nav className="flex flex-col space-y-3">
               <button 
                 onClick={() => scrollToSection('hero')}
-                className="text-gray-300 hover:text-primary-400 transition-colors duration-300 text-left py-2"
+                className="text-gray-700 hover:text-primary-600 transition-colors duration-300 text-left py-2"
               >
                 Главная
               </button>
               <button 
                 onClick={() => scrollToSection('products')}
-                className="text-gray-300 hover:text-primary-400 transition-colors duration-300 text-left py-2"
+                className="text-gray-700 hover:text-primary-600 transition-colors duration-300 text-left py-2"
               >
                 Продукция
               </button>
               <button 
                 onClick={() => scrollToSection('about')}
-                className="text-gray-300 hover:text-primary-400 transition-colors duration-300 text-left py-2"
+                className="text-gray-700 hover:text-primary-600 transition-colors duration-300 text-left py-2"
               >
                 О компании
               </button>
               <button 
                 onClick={() => scrollToSection('contact')}
-                className="text-gray-300 hover:text-primary-400 transition-colors duration-300 text-left py-2"
+                className="text-gray-700 hover:text-primary-600 transition-colors duration-300 text-left py-2"
               >
                 Контакты
               </button>
-              <div className="border-t border-dark-600 pt-3 mt-3">
-                <a
-                  href={`tel:${data.company.phone}`}
-                  className="flex items-center space-x-3 text-gray-300 hover:text-primary-400 transition-colors duration-300 py-2"
-                >
-                  <svg className="w-4 h-4 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
-                  </svg>
-                  <span>{data.company.phone}</span>
-                </a>
-              </div>
+                    <div className="border-t border-gray-200 pt-3 mt-3 space-y-2">
+                      <a
+                        href={`tel:${data.company.phone}`}
+                        className="flex items-center space-x-3 text-gray-700 hover:text-primary-600 transition-colors duration-300 py-2"
+                      >
+                        <svg className="w-4 h-4 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+                        </svg>
+                        <span>{data.company.phone}</span>
+                      </a>
+                      <a
+                        href={`tel:${data.company.phone2}`}
+                        className="flex items-center space-x-3 text-gray-700 hover:text-primary-600 transition-colors duration-300 py-2 pl-7"
+                      >
+                        <span>{data.company.phone2}</span>
+                      </a>
+                    </div>
             </nav>
           </div>
         )}
