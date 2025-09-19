@@ -29,11 +29,36 @@ const Header = () => {
         <div className="flex justify-between items-center py-4">
           {/* Logo */}
           <div className="flex items-center space-x-2 sm:space-x-3">
-            <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-br from-primary-500 to-accent-500 rounded-lg flex items-center justify-center flex-shrink-0">
-              <span className="text-white font-bold text-sm sm:text-lg">A</span>
+            <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg flex items-center justify-center flex-shrink-0 overflow-hidden">
+              <img 
+                src={data.company.logo} 
+                alt="Логотип компании" 
+                className="w-full h-full object-contain"
+                onError={(e) => {
+                  // Fallback к SVG иконке задвижки если изображение не загрузится
+                  e.target.style.display = 'none';
+                  e.target.nextSibling.style.display = 'block';
+                }}
+              />
+              <svg className="w-full h-full text-primary-500 hidden" fill="currentColor" viewBox="0 0 24 24">
+                {/* Корпус задвижки */}
+                <rect x="4" y="8" width="16" height="8" rx="1" fill="currentColor"/>
+                {/* Фланцы */}
+                <rect x="2" y="10" width="2" height="4" fill="currentColor"/>
+                <rect x="20" y="10" width="2" height="4" fill="currentColor"/>
+                {/* Шпиндель */}
+                <rect x="11" y="4" width="2" height="12" fill="currentColor"/>
+                {/* Маховик */}
+                <circle cx="12" cy="4" r="3" fill="none" stroke="currentColor" strokeWidth="1.5"/>
+                {/* Ручки маховика */}
+                <line x1="12" y1="1" x2="12" y2="2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+                <line x1="12" y1="6" x2="12" y2="7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+                <line x1="9" y1="4" x2="10" y2="4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+                <line x1="14" y1="4" x2="15" y2="4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+              </svg>
             </div>
             <div className="min-w-0">
-              <h1 className="text-lg sm:text-xl font-heading font-bold text-gray-900 truncate">
+              <h1 className="text-lg sm:text-lg lg:text-base font-heading font-bold text-gray-900 truncate">
                 {data.company.name}
               </h1>
               <p className="text-xs sm:text-sm text-gray-600 hidden sm:block">{data.company.location}</p>
